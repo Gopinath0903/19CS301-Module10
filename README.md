@@ -72,7 +72,7 @@ STEP 8 : Stop.
 
 ```
 Reg no-212223070007
-Name-Gopinnath G
+Name-Gopinath G
 
 import collections
 def fun(n):
