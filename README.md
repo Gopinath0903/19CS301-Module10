@@ -177,5 +177,124 @@ for i in range(4):
 
 ### Result: 
 Thus the python program to get the 4 integer values from user and display the values using multiprocessing library was executed successfully .
+
+
+
+###EX: 10.5 using circular queue
+
+### Aim: 
+Develop a python program to remove 3 values from the user and display the values using circular queue
+
+### Algorithm:
+
+1. **Initialize** a queue of size `k` with all elements as `None`.
+2. Set `head = -1` and `tail = -1` (queue is empty).
+
+---
+
+### 🔁 **To Enqueue (Add an Element):**
+
+3. If `(tail + 1) % k == head`,
+   → Queue is **full**, do not insert.
+
+4. If `head == -1`,
+   → Queue is **empty**, set `head = 0` and `tail = 0`, insert element.
+
+5. Else,
+   → Move `tail` to `(tail + 1) % k` and insert element at `tail`.
+
+---
+
+### 🔁 **To Dequeue (Remove an Element):**
+
+6. If `head == -1`,
+   → Queue is **empty**, nothing to remove.
+
+7. If `head == tail`,
+   → Only one element, remove it and set `head = tail = -1`.
+
+8. Else,
+   → Save value at `head`, move `head` to `(head + 1) % k`.
+
+---
+
+### 📋 **To Print the Queue:**
+
+9. If `head == -1`,
+   → Queue is empty.
+
+10. If `tail >= head`,
+    → Print elements from `head` to `tail`.
+
+11. Else (queue is wrapped around),
+    → Print from `head` to end, then from start to `tail`.
+
+
+### Program:
+```
+Reg no=212223070007
+Name-Gopinath G
+
+class MyCircularQueue():
+    def __init__(self, k):
+        self.k = k
+        self.queue = [None] * k
+        self.head = self.tail = -1
+    def enqueue(self, data):
+        if ((self.tail + 1) % self.k == self.head):
+            print("The circular queue is full\n")
+        elif (self.head == -1):
+            self.head = 0
+            self.tail = 0
+            self.queue[self.tail] = data
+        else:
+            self.tail = (self.tail + 1) % self.k
+            self.queue[self.tail] = data
+    def dequeue(self):
+        if (self.head == -1):
+            print("The circular queue is empty\n")
+        elif (self.head == self.tail):
+            temp = self.queue[self.head]
+            self.head = -1
+            self.tail = -1
+            return temp
+        else:
+            temp = self.queue[self.head]
+            self.head = (self.head + 1) % self.k
+            return temp
+    def printCQueue(self):
+        if(self.head == -1):
+            print("No element in the circular queue")
+        elif (self.tail >= self.head):
+            for i in range(self.head, self.tail + 1):
+                print(self.queue[i], end=" ")
+            print()
+        else:
+            for i in range(self.head, self.k):
+                print(self.queue[i], end=" ")
+            for i in range(0, self.tail + 1):
+                print(self.queue[i], end=" ")
+            print()
+obj = MyCircularQueue(5)
+for i in range(5):
+    obj.enqueue(int(input()))
+obj.dequeue()
+obj.dequeue()
+obj.dequeue()
+
+obj.printCQueue()
+
+
+```
+### Output:
+![image](https://github.com/user-attachments/assets/0c0d4e62-5fdd-4d46-9ced-d04b322951e4)
+
+### Result: 
+Thus the  python program to remove 3 values from the user and display the values using circular queue was executed successfully.
+
+
+
+
+
  
 
